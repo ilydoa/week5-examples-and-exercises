@@ -1,6 +1,30 @@
 const { DateTime } = require("luxon");
 
-/* Useful Functions (from API Documentation)
+const currDate = DateTime.now()
+console.log(currDate.toLocaleString(DateTime.DATE_MED));
+
+const birthday = DateTime.fromObject({
+        year: 2004,
+        month: 1,
+        day: 1,
+        hour: 4,
+        minute: 30,
+});
+
+console.log(currDate.toLocaleString(DateTime.DATETIME_FULL));
+console.log(birthday > currDate)
+
+const newTime = birthday.plus({
+        year: 1,
+        month: 2,
+        day: 3,
+        hour: 10
+});
+console.log(newTime.toLocaleString(DateTime.DATETIME_FULL));
+
+utc_bday = birthday.setZone("UTC-7")
+
+/* Useful Functions (from API Documentation) 
 
 DateTime obj = {
                     year: number, 
@@ -10,7 +34,7 @@ DateTime obj = {
                     minute: number (0-59)
                 }
 
-.now() -- Create a DateTime for the current instant, in the system's time zone
+ .now() -- Create a DateTime for the current instant, in the system's time zone
 
 .fromObject(obj) -- Create a DateTime from a JavaScript object with keys like 'year' and 'hour' with reasonable defaults
 
